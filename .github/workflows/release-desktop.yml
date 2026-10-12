@@ -39,6 +39,8 @@ permissions:
 
 jobs:
   cache-guard:
+    # Upstream signing, R2 and updater credentials belong to the original project.
+    if: github.repository == 'esengine/DeepSeek-Reasonix'
     name: cache hit guard
     runs-on: ubuntu-latest
     steps:
