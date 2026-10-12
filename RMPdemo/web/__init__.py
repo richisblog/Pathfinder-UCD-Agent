@@ -1,2 +1,0 @@
-"""Modern web app."""
-

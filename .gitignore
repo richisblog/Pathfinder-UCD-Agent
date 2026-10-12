@@ -1,29 +1,75 @@
-# Local configuration and credentials
+# Build artifacts
+/bin/
+/dist/
+/stage/
+/npm/.stage/
+/reasonix
+/reasonix.exe
+
+# Website (Astro) build output
+/site/dist/
+/site/.astro/
+/site/_preview.png
+
+# Go test/build scratch
+*.test
+*.out
+*.coverprofile
+coverage.out
+cpu.prof
+mem.prof
+
+# Wails desktop artifacts
+/desktop/build/*
+!/desktop/build/appicon.png
+!/desktop/build/appicon.svg
+/desktop/desktop
+/desktop/frontend/dist/*
+!/desktop/frontend/dist/.gitkeep
+/desktop/frontend/sourcemaps/
+/desktop/frontend/wailsjs/
+/desktop/frontend/package.json.md5
+
+# Environment / local config (reasonix.example.toml is the shared template)
 .env
-.env.*
-!.env.example
-*.pem
-*.key
-credentials*.json
-token.json
-# Runtime and generated files
-.DS_Store
-__pycache__/
-*.pyc
-.venv*/
-venv/
+.env.local
+*.local
+/reasonix.toml
+/desktop/.env
+/desktop/reasonix.toml
+/desktop/.local-bin/
+
+# Node / frontend dependencies and caches
 node_modules/
-.pytest_cache/
+.pnpm-store/
+.npm/
+
+# Project-local Reasonix state; keep the checked-in review command.
+/.reasonix/*
+!/.reasonix/commands/
+!/.reasonix/commands/review.md
+
+# CodeGraph per-project index (rebuilt locally; never committed)
+.codegraph/
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Isolated feature worktrees
+.worktrees/
+/site/public/av/
+
+benchmarks/context-maintenance-e2e/run/
+
+# Local generated Pathfinder artifacts
+/build/
+/pathfinder
+/desktop/PathfinderUCD.app/
+/tmp/
 .agents/
 .superpowers/
-.mimocode/
-.toolchains/
-tmp/
-reports/
-data/
-logs/
-*.db
-*.sqlite*
-*.jsonl
-*.app/
-*.dmg
+.env.*
+!.env.example
