@@ -18,7 +18,7 @@ type MatchResult struct {
 // Match returns supported SOPs whose explicit intent phrases occur in text.
 func (r Registry) Match(text string) MatchResult {
 	normalized := strings.ToLower(strings.TrimSpace(text))
-	if strings.Contains(normalized, "退课") || strings.Contains(normalized, "加课") || strings.Contains(normalized, "drop class") || strings.Contains(normalized, "add class") {
+	if strings.Contains(normalized, "退课") || strings.Contains(normalized, "退掉") || strings.Contains(normalized, "加课") || strings.Contains(normalized, "drop class") || strings.Contains(normalized, "add class") {
 		return MatchResult{
 			Matches:    []Match{{SOPID: "add_drop_grading", Confidence: 0.75, Reasons: []string{"explicit_intent:add_drop_grading"}}},
 			ActiveSOPs: []string{"add_drop_grading"},
