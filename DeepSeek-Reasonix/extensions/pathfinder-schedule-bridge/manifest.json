@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Pathfinder Schedule Bridge",
+  "version": "0.3.1",
+  "description": "Read-only live UC Davis schedule data for Pathfinder UCD.",
+  "minimum_chrome_version": "116",
+  "permissions": ["storage", "scripting"],
+  "host_permissions": [
+    "https://my.ucdavis.edu/*",
+    "https://registrar-apps.ucdavis.edu/*",
+    "http://127.0.0.1/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Pathfinder Schedule Bridge"
+  }
+}

@@ -1,0 +1,29 @@
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*.json
+token.json
+# Runtime and generated files
+.DS_Store
+__pycache__/
+*.pyc
+.venv*/
+venv/
+node_modules/
+.pytest_cache/
+.agents/
+.superpowers/
+.mimocode/
+.toolchains/
+tmp/
+reports/
+data/
+logs/
+*.db
+*.sqlite*
+*.jsonl
+*.app/
+*.dmg

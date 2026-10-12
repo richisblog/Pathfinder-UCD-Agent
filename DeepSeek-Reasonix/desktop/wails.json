@@ -1,0 +1,19 @@
+{
+  "$schema": "https://wails.io/schemas/config.v2.json",
+  "name": "pathfinder-ucd",
+  "outputfilename": "pathfinder-ucd",
+  "frontend:install": "pnpm install",
+  "frontend:build": "pnpm build",
+  "frontend:dev:watcher": "pnpm dev",
+  "frontend:dev:serverUrl": "auto",
+  "author": {
+    "name": "esengine"
+  },
+  "info": {
+    "companyName": "Pathfinder UCD",
+    "productName": "Pathfinder UCD",
+    "productVersion": "0.0.0",
+    "copyright": "Copyright © 2026 Pathfinder UCD Contributors",
+    "comments": "Pathfinder UCD desktop campus assistant."
+  }
+}

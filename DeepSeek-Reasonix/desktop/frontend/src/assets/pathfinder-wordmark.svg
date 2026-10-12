@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 80" role="img" aria-label="Pathfinder">
+  <defs>
+    <linearGradient id="pathfinder-wordmark-ink" x1="7" y1="5" x2="72" y2="78" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#172554"/>
+      <stop offset="1" stop-color="#4338CA"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(4 2) scale(.59)">
+    <path fill="url(#pathfinder-wordmark-ink)" d="M24 14h45c27 0 45 17 45 42s-18 42-45 42H51v20H24V14Zm27 24v36h17c12 0 19-7 19-18s-7-18-19-18H51Z"/>
+    <g id="graduation-cap">
+      <path fill="#F4B740" d="m40 50 28-15 28 15-28 15-28-15Z"/>
+      <path fill="#D89A22" d="M52 59v10c9 8 23 8 32 0V59l-16 9-16-9Z"/>
+      <path fill="#F4B740" d="M94 51h4v18h-4z"/>
+      <circle cx="96" cy="70" r="4" fill="#F4B740"/>
+    </g>
+  </g>
+  <text x="82" y="54" fill="#29324A" font-family="Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="42" font-weight="680" letter-spacing="-1.5">Pathfinder</text>
+</svg>

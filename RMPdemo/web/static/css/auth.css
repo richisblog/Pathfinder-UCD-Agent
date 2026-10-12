@@ -1,0 +1,114 @@
+.auth-gate {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(360px, 480px);
+  align-items: center;
+  gap: 42px;
+  padding: 44px;
+  background:
+    linear-gradient(135deg, rgba(31, 111, 85, 0.12), transparent 38%),
+    radial-gradient(circle at 80% 12%, rgba(234, 184, 88, 0.14), transparent 28%),
+    var(--bg);
+}
+
+.auth-hero,
+.auth-panel {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 22px 60px rgba(24, 44, 36, 0.10);
+}
+
+.auth-hero {
+  min-height: 620px;
+  display: grid;
+  align-content: center;
+  gap: 28px;
+  padding: 34px;
+  overflow: hidden;
+}
+
+.brand-mark {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: #1f6f55;
+  color: white;
+  font-weight: 800;
+}
+
+.auth-hero h1 {
+  max-width: 720px;
+  margin: 12px 0 14px;
+  font-size: clamp(34px, 5vw, 62px);
+  line-height: 0.98;
+}
+
+.auth-hero p,
+.auth-panel p {
+  color: var(--muted);
+  line-height: 1.58;
+}
+
+.auth-panel {
+  display: grid;
+  gap: 16px;
+  padding: 28px;
+}
+
+.auth-panel h2 {
+  font-size: 26px;
+  line-height: 1.1;
+}
+
+.auth-panel .primary-link {
+  min-height: 52px;
+  margin-top: 4px;
+}
+
+.fine-print {
+  margin: 0;
+  font-size: 13px;
+}
+
+.language-toggle {
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  width: 190px;
+  padding: 4px;
+  border: 1px solid #d7e2dc;
+  border-radius: 12px;
+  background: #f3f7f4;
+}
+
+.lang-choice {
+  min-height: 34px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: #53665d;
+  padding: 0 10px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.lang-choice.active {
+  background: white;
+  color: var(--brand);
+  box-shadow: 0 6px 16px rgba(24, 44, 36, 0.08);
+}
+
+@media (max-width: 860px) {
+  .auth-gate {
+    grid-template-columns: 1fr;
+    padding: 22px;
+  }
+
+  .auth-hero {
+    min-height: 360px;
+  }
+}

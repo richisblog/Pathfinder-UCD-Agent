@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in | Pathfinder UCD</title>
+  <link rel="stylesheet" href="/static/css/base.css">
+  <link rel="stylesheet" href="/static/css/auth.css">
+</head>
+<body>
+  <main class="auth-gate">
+    <section class="auth-hero" aria-label="Pathfinder UCD introduction">
+      <div class="brand-mark">PU</div>
+      <div>
+        <div class="eyebrow" data-i18n="brand">Pathfinder UCD</div>
+        <h1 data-i18n="loginSubtitle">Course planning that remembers your context.</h1>
+        <p data-i18n="loginBody">Use your @ucdavis.edu Google account. Pathfinder saves only the student context you choose to share.</p>
+      </div>
+    </section>
+    <section class="auth-panel">
+      <div class="language-toggle" aria-label="Language">
+        <button type="button" class="lang-choice" data-language-choice="en">English</button>
+        <button type="button" class="lang-choice" data-language-choice="zh">中文</button>
+      </div>
+      <div class="eyebrow" data-i18n="loginEyebrow">UC Davis account</div>
+      <h2 data-i18n="loginTitle">Sign in with your school email</h2>
+      <p data-i18n="loginBody">Use your @ucdavis.edu Google account. Pathfinder saves only the student context you choose to share.</p>
+      <a class="primary-link" href="/auth/google" data-i18n="loginCta">Continue with Google</a>
+      <p class="fine-print" data-i18n="loginFinePrint">Only @ucdavis.edu accounts are allowed. API keys and private data stay server-side.</p>
+      <div id="authError" class="form-error hidden"></div>
+    </section>
+  </main>
+  <script type="module" src="/static/js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<section class="settings-section">
+  <div class="section-heading">
+    <div class="eyebrow" data-i18n="languageEyebrow">Language</div>
+    <h2 data-i18n="interfaceLanguage">Interface language</h2>
+  </div>
+  <label>
+    <span data-i18n="preferredLanguage">Preferred language</span>
+    <select name="language">
+      <option value="en" data-i18n="english">English</option>
+      <option value="zh" data-i18n="chinese">中文</option>
+    </select>
+  </label>
+</section>
+
+<section class="settings-section">
+  <div class="section-heading">
+    <div class="eyebrow" data-i18n="academicProfile">Academic profile</div>
+    <h2 data-i18n="studentStageMajor">Student stage and major</h2>
+  </div>
+  <div class="form-grid">
+    <label>
+    <span data-i18n="studentType">Student type</span>
+    <select name="student_type" required>
+      <option value="" data-i18n="selectOne">Select one</option>
+      <option value="freshman" data-i18n="freshman">Freshman / incoming first-year</option>
+      <option value="transfer" data-i18n="transfer">Transfer student</option>
+      <option value="continuing" data-i18n="continuing">Continuing student</option>
+      <option value="prospective" data-i18n="prospective">Prospective student</option>
+    </select>
+  </label>
+  <label>
+    <span data-i18n="internationalStatus">International student status</span>
+    <select name="international_status">
+      <option value="prefer_not_to_answer" data-i18n="internationalPreferNot">Prefer not to answer</option>
+      <option value="yes" data-i18n="internationalRulesApply">Yes, F-1/J-1 or international enrollment rules apply</option>
+      <option value="no" data-i18n="internationalNo">No</option>
+    </select>
+  </label>
+  <label>
+    <span data-i18n="college">College</span>
+    <select name="college">
+      <option value="" data-i18n="notSure">Not sure yet</option>
+    </select>
+  </label>
+  <label>
+    <span data-i18n="currentMajor">Current major</span>
+    <select name="current_major"></select>
+    <span class="field-note hidden" data-major-note-for="current_major"></span>
+  </label>
+  <label>
+    <span data-i18n="targetMajor">Target major</span>
+    <select name="target_major"></select>
+    <span class="field-note hidden" data-major-note-for="target_major"></span>
+  </label>
+  </div>
+  <div class="wizard-note hidden" data-major-catalog-warning></div>
+  <label class="checkbox-row">
+    <input name="considering_change_major" type="checkbox">
+    <span data-i18n="changeMajor">I am considering changing majors</span>
+  </label>
+</section>
+
+<section class="settings-section">
+  <div class="section-heading">
+    <div class="eyebrow" data-i18n="timelineEyebrow">Timeline</div>
+    <h2 data-i18n="entryGraduation">Entry and graduation</h2>
+  </div>
+  <div class="form-grid">
+    <label>
+    <span data-i18n="entryTerm">Entry term</span>
+    <select name="entry_term">
+      <option value="" data-i18n="selectTerm">Select term</option>
+      <option value="Fall" data-i18n="fall">Fall</option>
+      <option value="Winter" data-i18n="winter">Winter</option>
+      <option value="Spring" data-i18n="spring">Spring</option>
+      <option value="Summer" data-i18n="summer">Summer</option>
+    </select>
+  </label>
+  <label>
+    <span data-i18n="entryYear">Entry year</span>
+    <input name="entry_year" inputmode="numeric" placeholder="2026">
+  </label>
+  <label>
+    <span data-i18n="gradYear">Expected graduation year</span>
+    <input name="graduation_year" inputmode="numeric" placeholder="2030">
+  </label>
+  <label>
+    <span data-i18n="targetUnits">Target units per quarter</span>
+    <input name="target_units" inputmode="numeric" placeholder="15">
+  </label>
+  </div>
+</section>
+
+<section class="settings-section">
+  <div class="section-heading">
+    <div class="eyebrow" data-i18n="planningStyle">Planning style</div>
+    <h2 data-i18n="difficultyPreferences">Difficulty and preferences</h2>
+  </div>
+  <div class="form-grid">
+    <label>
+    <span data-i18n="priority">Planning priority</span>
+    <select name="priority">
+      <option value="" data-i18n="selectPriority">Select priority</option>
+      <option value="Balanced" data-i18n="balanced">Balanced</option>
+      <option value="GPA first" data-i18n="gpaFirst">GPA first</option>
+      <option value="Learn deeply" data-i18n="learnDeeply">Learn deeply</option>
+      <option value="Graduate early" data-i18n="graduateEarly">Graduate early</option>
+      <option value="Explore majors" data-i18n="exploreMajors">Explore majors</option>
+    </select>
+  </label>
+  <label>
+    <span data-i18n="maxDifficulty">Maximum comfortable difficulty</span>
+    <select name="max_difficulty">
+      <option value="" data-i18n="selectDifficulty">Select difficulty</option>
+      <option value="Light" data-i18n="light">Light</option>
+      <option value="Moderate" data-i18n="moderate">Moderate</option>
+      <option value="Challenging is okay" data-i18n="challenging">Challenging is okay</option>
+    </select>
+  </label>
+  </div>
+  <label>
+    <span data-i18n="schedulePreferences">Schedule preferences</span>
+    <textarea name="schedule_preference" rows="3" placeholder="e.g. no 8 AM classes, prefer Tue/Thu blocks, need time for work" data-i18n-placeholder="schedulePlaceholder"></textarea>
+  </label>
+</section>
+
+<section class="settings-section">
+  <div class="section-heading">
+    <div class="eyebrow" data-i18n="context">Context</div>
+    <h2 data-i18n="creditsPlacementSelf">Credits, placement, and self assessment</h2>
+  </div>
+  <label>
+    <span data-i18n="creditsLabel">AP / IB / transfer credit summary</span>
+    <textarea name="ap_ib_summary" rows="3" placeholder="e.g. AP Calc BC 5, AP CS A 4, community college writing course" data-i18n-placeholder="creditsPlaceholder"></textarea>
+  </label>
+  <label>
+    <span data-i18n="placementLabel">Placement status</span>
+    <textarea name="placement_summary" rows="3" placeholder="e.g. Math placement done; Chemistry placement pending" data-i18n-placeholder="placementPlaceholder"></textarea>
+  </label>
+  <label>
+    <span data-i18n="professorPreferences">Professor preferences</span>
+    <textarea name="professor_style" rows="3" placeholder="e.g. clear lectures, fair grading, avoid heavy workload" data-i18n-placeholder="professorPlaceholder"></textarea>
+  </label>
+  <label>
+    <span data-i18n="selfLabel">Self assessment</span>
+    <textarea name="self_assessment" rows="4" placeholder="Use casual language: learning style, confidence, worries, schedule dislikes, anything Pathfinder should remember." data-i18n-placeholder="selfPlaceholder"></textarea>
+  </label>
+</section>
+
+<div id="profileError" class="form-error hidden"></div>

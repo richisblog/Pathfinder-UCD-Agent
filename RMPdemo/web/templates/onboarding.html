@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>First-time setup | Pathfinder UCD</title>
+  <link rel="stylesheet" href="/static/css/base.css">
+  <link rel="stylesheet" href="/static/css/profile.css">
+</head>
+<body>
+  <main class="onboarding-shell">
+    <section class="wizard-panel" aria-live="polite">
+      <div class="wizard-topbar">
+        <div>
+          <div class="eyebrow" data-i18n="setupEyebrow">First-time setup</div>
+          <h1 data-i18n="setupTitle">Let’s set up your student profile</h1>
+          <p data-i18n="setupBody">One question at a time. You can edit everything later in Settings.</p>
+        </div>
+        <button id="logoutBtn" class="secondary-btn" type="button" data-i18n="logout">Log out</button>
+      </div>
+      <div id="wizardProgress" class="wizard-progress"></div>
+      <form id="onboardingWizard" class="wizard-form" novalidate>
+        <section id="wizardStep" class="wizard-step"></section>
+        <div id="profileError" class="form-error hidden"></div>
+        <div class="wizard-actions">
+          <button id="backStepBtn" class="secondary-btn" type="button">Back</button>
+          <button id="nextStepBtn" type="button">Next</button>
+        </div>
+      </form>
+    </section>
+  </main>
+  <script type="module" src="/static/js/onboarding.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chat | Pathfinder UCD</title>
+  <link rel="stylesheet" href="/static/css/base.css">
+  <link rel="stylesheet" href="/static/css/chat.css">
+  <link rel="stylesheet" href="/static/css/markdown.css">
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="session-sidebar" aria-label="Chat history" data-i18n-aria-label="chatHistory">
+      <div class="sidebar-header">
+        <div>
+          <div class="eyebrow">Pathfinder UCD</div>
+          <h2 data-i18n="chats">Chats</h2>
+        </div>
+        <button id="newChatBtn" class="icon-btn" type="button" title="New chat" aria-label="New chat" data-i18n-title="newChat" data-i18n-aria-label="newChat">+</button>
+      </div>
+      <div id="sessionList" class="session-list"></div>
+    </aside>
+    <section class="chat-pane">
+      <header class="topbar">
+        <div>
+          <div class="eyebrow">Pathfinder UCD</div>
+          <h1 data-i18n="chatTitle">Academic advising chat</h1>
+        </div>
+        <div class="topbar-actions">
+          <a class="secondary-link" href="/settings" data-i18n="profile">Profile</a>
+          <button id="logoutBtn" class="secondary-btn" type="button" data-i18n="logout">Log out</button>
+        </div>
+      </header>
+
+      <div id="messages" class="messages"></div>
+
+      <footer class="composer">
+        <div class="composer-row">
+          <textarea id="messageInput" rows="1" placeholder="Message Pathfinder UCD..." data-i18n-placeholder="chatPlaceholder"></textarea>
+          <button id="sendBtn" type="button" data-i18n="send">Send</button>
+        </div>
+      </footer>
+    </section>
+  </main>
+  <script type="module" src="/static/js/chat.js"></script>
+</body>
+</html>
