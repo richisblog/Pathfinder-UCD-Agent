@@ -9,6 +9,8 @@ import type { WorkbenchProps } from '../src/client/Workbench.js'
 import type { ConsultationBoard } from '../src/consultation.js'
 
 const dom = new JSDOM('<!doctype html><html><body></body></html>', { url: 'http://localhost' })
+dom.window.document.documentElement.lang = 'zh'
+dom.window.localStorage.setItem('pathfinder.ui-language', 'zh')
 Object.defineProperty(globalThis, 'window', { value: dom.window, configurable: true })
 Object.defineProperty(globalThis, 'document', { value: dom.window.document, configurable: true })
 Object.defineProperty(globalThis, 'navigator', { value: dom.window.navigator, configurable: true })
@@ -295,4 +297,55 @@ test('student clarification presents a waiting state instead of query activity o
   assert.equal(view.queryByText(/正在查询/), null)
   assert.equal(view.queryByText('查询失败，保留现有证据并等待核实'), null)
   view.unmount()
+})
+
+test('English and Chinese switches translate the complete fixed UI without changing session artifacts', () => {
+  const englishBoard = {
+    ...board,
+    goal: 'Find a suitable course',
+    plan: [],
+    conclusions: [],
+    questions: [],
+    uncertainties: [],
+    evidence: [],
+    pending: {},
+    visualizations: {},
+    error: '',
+  }
+  const before = JSON.stringify(englishBoard)
+  const view = render(
+    createElement(
+      Workbench,
+      props(englishBoard, () => {}),
+    ),
+  )
+  try {
+    fireEvent.change(view.getByRole('combobox', { name: '语言' }), { target: { value: 'en' } })
+    assert.ok(view.getByRole('heading', { name: 'Consultation workbench' }))
+    assert.ok(view.getByRole('tab', { name: /^Plan/ }))
+    assert.ok(view.getByText('Research progress'))
+    const copy = view.container.cloneNode(true) as HTMLElement
+    copy.querySelector('select')!.remove()
+    assert.doesNotMatch(copy.textContent || '', /[\u4e00-\u9fff]/)
+    fireEvent.click(view.getByRole('tab', { name: /^Findings/ }))
+    assert.ok(view.getByText('Your findings will appear here'))
+    fireEvent.click(view.getByRole('tab', { name: /^Follow-ups/ }))
+    assert.ok(view.getByText('Keep exploring'))
+    fireEvent.click(view.getByRole('tab', { name: /^Uncertainties/ }))
+    assert.ok(view.getByText('Keep uncertainty visible'))
+    assert.equal(JSON.stringify(englishBoard), before)
+    assert.equal(dom.window.localStorage.getItem('pathfinder.ui-language'), 'en')
+    fireEvent.change(view.getByRole('combobox', { name: 'Language' }), { target: { value: 'zh' } })
+    assert.ok(view.getByRole('heading', { name: '咨询工作台' }))
+    assert.ok(view.getByText('让不确定性保持可见'))
+    const overview = view.container.querySelector('.pfw-overview')!
+    assert.ok(overview.contains(view.container.querySelector('.pfw-header')))
+    assert.ok(overview.contains(view.container.querySelector('.pfw-progress')))
+    assert.equal(overview.contains(view.container.querySelector('.pfw-tabbar')), false)
+    assert.equal(overview.contains(view.container.querySelector('.pfw-scroll')), false)
+    assert.equal(overview.getAttribute('tabindex'), '0')
+  } finally {
+    view.unmount()
+    dom.window.localStorage.setItem('pathfinder.ui-language', 'zh')
+  }
 })

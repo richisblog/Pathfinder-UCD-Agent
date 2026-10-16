@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import * as echarts from 'echarts'
 import type { Visualization as Spec } from '../visualization.js'
+import { t, useLanguage } from './i18n.js'
 import { chartOption, type ChartTheme } from './chart-option.js'
 
 type Theme = ChartTheme
@@ -47,6 +48,7 @@ function useTheme(target: React.RefObject<HTMLElement>): Theme {
 function EChart({ spec, theme }: { spec: Spec; theme: Theme }) {
   const host = useRef<HTMLDivElement>(null),
     chart = useRef<echarts.ECharts>()
+  const language = useLanguage()
   const [error, setError] = useState('')
   const signature = JSON.stringify(spec)
   useEffect(() => {
@@ -74,7 +76,7 @@ function EChart({ spec, theme }: { spec: Spec; theme: Theme }) {
       instance.setOption(option, { notMerge: true, lazyUpdate: false })
       setError('')
     } catch (e) {
-      setError(e instanceof Error ? e.message : '无法显示此图表')
+      setError(e instanceof Error ? e.message : t('无法显示此图表', language))
     }
   }, [signature, theme])
   return (
@@ -100,6 +102,7 @@ export function frameDocument(spec: Spec, theme: Theme): string {
   return `<!doctype html><html><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'"><style>:root{color-scheme:light dark;--pf-brand:${theme.brand};--pf-text:${theme.text};--pf-muted:${theme.muted};--pf-border:${theme.border};--pf-bg:${theme.background}}*{box-sizing:border-box}body{margin:0;padding:12px;font:13px/1.65 ${theme.font};color:var(--pf-text);background:var(--pf-bg)}svg,canvas{max-width:100%;height:auto}button,input,select{font:inherit;color:inherit;border:1px solid var(--pf-border);border-radius:8px;background:var(--pf-bg);padding:6px 10px}button{cursor:pointer}button:hover{border-color:var(--pf-brand)}table{width:100%;border-collapse:collapse}td,th{padding:7px;text-align:left;border-bottom:1px solid var(--pf-border)}</style></head><body>${spec.kind === 'canvas' ? '<canvas id="pathfinder-canvas" width="960" height="520" aria-label="交互演示"></canvas>' : ''}${spec.markup || ''}<script>window.PATHFINDER_DATA=${json(spec.data ?? {})};window.PATHFINDER_THEME=${json(theme)};${script}</script></body></html>`
 }
 export function Visualization({ spec }: { spec: Spec }) {
+  const language = useLanguage()
   const root = useRef<HTMLElement>(null)
   const theme = useTheme(root)
   const source = useMemo(() => frameDocument(spec, theme), [spec, theme])
@@ -108,7 +111,10 @@ export function Visualization({ spec }: { spec: Spec }) {
       <div className="pfw-line">
         <h3>{spec.title}</h3>
         <span>
-          {{ evidence: '查询证据', artifacts: '咨询产物', scenario: '假设演示' }[spec.origin]}
+          {t(
+            { evidence: '查询证据', artifacts: '咨询产物', scenario: '假设演示' }[spec.origin],
+            language,
+          )}
         </span>
       </div>
       {spec.rationale && <p className="pfw-section-note">{spec.rationale}</p>}
@@ -124,9 +130,14 @@ export function Visualization({ spec }: { spec: Spec }) {
           srcDoc={source}
         />
       )}
-      {spec.assumptions && <p className="pfw-section-note">假设：{spec.assumptions}</p>}
+      {spec.assumptions && (
+        <p className="pfw-section-note">
+          {t('假设：', language)}
+          {spec.assumptions}
+        </p>
+      )}
       <details className="pfw-sources">
-        <summary>核对数据与配置</summary>
+        <summary>{t('核对数据与配置', language)}</summary>
         <pre className="pfw-config">
           {JSON.stringify(
             spec.kind === 'echarts'
@@ -136,7 +147,10 @@ export function Visualization({ spec }: { spec: Spec }) {
             2,
           )}
         </pre>
-        <small>来源引用：{spec.evidence_ids.join(' · ') || '当前咨询产物或已注明假设'}</small>
+        <small>
+          {t('来源引用：', language)}
+          {spec.evidence_ids.join(' · ') || t('当前咨询产物或已注明假设', language)}
+        </small>
       </details>
     </section>
   )

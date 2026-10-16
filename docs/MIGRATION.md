@@ -1,20 +1,28 @@
-# Harness 原生架构迁移
+# Migration to native DeepSeek Harness
 
-从 v0.2.2 开始，Pathfinder UCD 的当前实现是 DeepSeek Harness 原生 TypeScript 插件。
+English | [简体中文](MIGRATION.zh-CN.md)
 
-- 仓库根目录可直接 npm ci、构建与测试，不再依赖 Go、Wails 或旧 Reasonix Agent。
-- 模型调用、会话、工具执行和原生提问 UI 由 Harness 提供；插件实现校园数据、咨询投影和右侧工作台。
-- 全部校园查询通过 https://rmp.richis.top 的只读 JSON API。取消本地 SQLite、文本资料读取与 dataRoot 配置。
-- 课表导入、账号和论坛不在插件范围内，旧扩展及其发布/部署流程已从当前主分支移除。
-- 旧聊天不自动导入 Harness。新安装请使用 README 的独立配置；不要复制旧账号数据或密钥。
-- 历史源代码仍能从 v0.1.0 标签及此前 Git 提交查看；旧 macOS DMG 属于旧架构，不提供当前功能。
+From v0.2.2, the current Pathfinder UCD implementation is a native TypeScript plugin for DeepSeek Harness.
 
-## 新咨询流程
+- Install, build and test from the repository root. Go, Wails and the former Reasonix agent are no longer required.
+- Harness owns model execution, conversations, tool dispatch and native question UI. The plugin supplies campus queries, consultation projections and the workbench.
+- Campus queries use the read-only CourseScope JSON API at https://rmp.richis.top. Local SQLite/text queries and `dataRoot` configuration are retired.
+- Schedule import, accounts and forums are outside scope. Their old extensions and publishing/deployment workflows have been removed from the current branch.
+- Old chat data is not automatically imported. Follow the README for a separate Harness installation; do not copy old account data or credentials.
+- Prior source remains in Git history and the v0.1.0 tag. The old macOS DMG belongs to the previous architecture.
 
-模糊个人请求 → 缺口评估 → 原生提问并等待 → 复核学生回答 → 发布研究计划 → 网站查询 → 部分更新四区产物 → 继续研究或回答。
+## Consultation flow
 
-学生自述与网站证据分开保存。课程事实查询无需填写完整学生资料；对影响决策的未知条件逐步提问。同步控制提示不算查询证据，不增加证据版本。真实 API 错误继续明确记录。
+Vague personal request → context assessment → native question and wait → reassess the answer → publish a research plan → API lookup → update changed artifacts → continue or answer.
 
-## 发布边界
+Student statements remain separate from official evidence. Ask incrementally about decision-critical gaps; factual lookups do not require a complete student profile. Synchronization-control notices add no evidence, while real API failures remain recorded.
 
-当前源码包含插件、测试、许可和 CI。发布包包含编译后的 Host/Client 与许可，不包含本机 profile、模型密钥、用户聊天、课表或校园数据库。ECharts 随浏览器 bundle 发布；依赖库版权说明见 THIRD_PARTY_NOTICES.md。
+## Language and layout in v0.2.3
+
+English is the default README language, with a complete Chinese alternative. The workbench can use English, Chinese or follow Harness, without rewriting original evidence or saved artifacts. New generated content honors the student's language request.
+
+The upper overview has an independent scrollbar and a maximum of 320 px or 40% of panel height. Artifact tabs, body and footer remain outside it.
+
+## Publication boundary
+
+Source releases contain the plugin, tests, licenses and CI. Compiled packages contain Host/Client code and notices, without machine profiles, credentials, chats, schedules or campus databases. ECharts is bundled in the browser module. See THIRD_PARTY_NOTICES.md for third-party licenses.

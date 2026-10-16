@@ -1,6 +1,6 @@
 {
   "name": "dsh-plugin-pathfinder-ucd",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "private": true,
   "description": "Native TypeScript CourseScope API consultation tools and live workbench for DeepSeek Harness",
   "type": "module",
@@ -103,7 +103,8 @@
         "@deepseek-ai/dsh-client-ui-sidebar-right",
         "@deepseek-ai/dsh-client-ui-session",
         "@deepseek-ai/dsh-client-ui-conversation",
-        "@deepseek-ai/dsh-api-session-controller"
+        "@deepseek-ai/dsh-api-session-controller",
+        "@deepseek-ai/dsh-client-locale"
       ]
     }
   },

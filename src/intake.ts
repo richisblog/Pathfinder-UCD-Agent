@@ -84,7 +84,9 @@ export function installIntake(ctx: Context): void {
           questions: [
             {
               id: 'student-context',
-              header: '先明确你的目标',
+              header: /[\u4e00-\u9fff]/.test(question)
+                ? '补充一条关键信息'
+                : 'One detail before we continue',
               question,
               detail: reason,
               ...(options ? { options: options.map((label) => ({ label })) } : {}),
